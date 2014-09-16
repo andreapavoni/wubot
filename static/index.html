@@ -8,16 +8,13 @@
 <body>
 
   <div class="centered">
-    <span class="js-avatar avatar"><img /></span>
-
-    <img src="hubot.jpg" class="hubot-avatar">
-    <span class="name">Hubot:</span>
+    <h1>Huboard</h1>
 
     <div class="js-replies" id="replies">
-      <span class="message">Hello there, I'm here to serve your commands</span>
+      <p class="message"><span class="name">Hubot:</span> Hello there, I'm here to serve your commands</p>
     </div>
 
-    <div class="js-command-bar">
+    <div class="command-bar">
       <input class="js-command-input" id="command-input" type="text" autofocus/></input>
     </div>
   </div>
@@ -27,7 +24,7 @@
   <script>
     var socket = io();
 
-    $('#command-input').keydown(function() {
+    $('#command-input').keydown(function(event) {
       if (event.keyCode == 13) {
         var that = $(this);
         socket.emit('message', that.val());
@@ -36,8 +33,19 @@
     });
 
     socket.on('message', function(data){
-      var replies = $('#replies')
-      $(("<span class='message'>" + data.split("\n").join("<br />") + "</span>")).appendTo(replies);
+      var replies = $('#replies');
+      var message;
+      if (data.match(/(jpeg|jpg|gif|png)$/) != null) {
+        message = $(("<p class='message'/>"));
+        $("<span class='name'>Hubot:</span><br/><img src='" + data + "' widht='400' height='400'>").appendTo(message);
+        message.appendTo(replies);
+      } else {
+        pars = [];
+        $.each(data.split("\n"), function( index, value ) {
+          $(("<p class='message'><span class='name'>Hubot:</span> " + value + "</p>")).appendTo(replies);
+        });
+      }
+
       replies.scrollTop(replies.get(0).scrollHeight);
     });
   </script>

@@ -65,7 +65,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 html {
   box-sizing: border-box;
-  background-image: linear-gradient(#007AAA, #292931);
+  background-color: #292931;
   top: 0;
   bottom: 0;
   position: absolute;
@@ -96,14 +96,11 @@ a:hover {
 }
 
 h1 {
-  font-size: 21px;
+  font-size: 26px;
   color: #fff;
   letter-spacing: -0.05em;
   line-height: 28px;
-  font-weight: normal;
   margin: 20px 0;
-}
-h1 strong {
   font-weight: bold;
 }
 
@@ -122,45 +119,30 @@ h1 strong {
 .centered .name {
   font-size: 18px;
   font-weight: bold;
-  display: block;
+  display: inline-block;
 }
-.centered .hubot-avatar {
-  width: 50px;
-  height: 50px;
-  margin: -5px 20px 0 10px;
-  margin-top: -8px;
-  border-radius: 50px;
-  box-shadow: 0 0 0 3px #fff;
-  float: left;
-}
+
 @media only screen and (max-width: 600px) {
-  .centered .name, .centered .hubot-avatar {
+  .centered .name {
     display: none;
   }
   .centered .message {
     text-align: center;
   }
 }
-.centered .avatar {
-  display: none;
-  position: absolute;
-  top: -160px;
-  left: 50%;
-  margin-left: -70px;
-}
 
 .centered .js-replies {
   max-height: 400px;
   overflow-y: scroll;
+  overflow-x: none;
 }
 
-.centered .avatar img {
-  height: 140px;
-  width: 140px;
-  border-radius: 100%;
-  border: 4px solid #fff;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+.centered .command-bar {
+  margin-top: 2em;
+  border: solid thin grey;
+  border-radius: 3px;
 }
+
 .centered .message {
   line-height: 24px;
   display: block;
