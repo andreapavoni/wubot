@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hbot</title>
+  <link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <div class="centered">
+    <span class="js-avatar avatar"><img /></span>
+
+    <img src="hubot.jpg" class="hubot-avatar">
+    <span class="name">Hubot:</span>
+
+    <div class="js-replies" id="replies">
+      <span class="message">Hello there, I'm here to serve your commands</span>
+    </div>
+
+    <div class="js-command-bar">
+      <input class="js-command-input" id="command-input" type="text" autofocus/></input>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    $('#command-input').keydown(function() {
+      if (event.keyCode == 13) {
+        var that = $(this);
+        socket.emit('message', that.val());
+        that.val('');
+      }
+    });
+
+    socket.on('message', function(data){
+      var replies = $('#replies')
+      $(("<span class='message'>" + data.split("\n").join("<br />") + "</span>")).appendTo(replies);
+      replies.scrollTop(replies.get(0).scrollHeight);
+    });
+  </script>
+
+</body>
+</html>
