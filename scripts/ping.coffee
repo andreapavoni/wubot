@@ -4,8 +4,8 @@
 # Commands:
 #   hubot ping - Reply with pong
 #   hubot echo <text> - Reply back with <text>
-#   hubot time - Reply with current time
-#   hubot your name - Reply with its own name
+#   hubot time - Reply with current server time
+#   hubot your name - Reply with Hubot name
 #   hubot adapter - Reply with the adapter name
 
 module.exports = (robot) ->

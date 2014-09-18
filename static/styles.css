@@ -72,7 +72,7 @@ a {
 
 h1 {
   font-size: 26px;
-  color: white;
+  color: #fff;
   letter-spacing: -0.05em;
   line-height: 28px;
   margin: 20px 0;
@@ -88,7 +88,7 @@ h1 {
   max-width: 700px;
   margin: 0 auto;
   text-align: left;
-  color: white; }
+  color: #fff; }
   .centered .name {
     font-size: 18px;
     font-weight: bold;
@@ -102,7 +102,7 @@ h1 {
     .centered .command-bar > .hint {
       font-size: small;
       margin-top: 3px;
-      color: gray; }
+      color: grey; }
       .centered .command-bar > .hint code {
         font-family: monospace;
         font-size: large; }
@@ -115,12 +115,12 @@ h1 {
     padding: 20px;
     width: 100%;
     border: none;
-    color: white;
+    color: #fff;
     border-radius: 2px;
     font-size: 24px;
     outline: none;
     cursor: block;
-    border: solid thin gray;
+    border: solid thin grey;
     border-radius: 3px; }
   .centered .meta {
     display: inline-block;
@@ -134,3 +134,5 @@ h1 {
     display: none; }
   .centered .message {
     text-align: center; } }
+
+/*# sourceMappingURL=styles.css.map */

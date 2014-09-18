@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Hbot</title>
-  <link href="styles.css" rel="stylesheet" type="text/css" />
+  <link href="/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -21,52 +21,6 @@
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io();
-    var replies = $('#replies');
-
-    var formatReply = function(data) {
-      switch (data.type) {
-        case "text":
-          $.each(data.body.split("\n"), function( index, body ) {
-            $(("<p class='message'>" + body + "</p>")).appendTo(replies);
-          });
-          break;
-        case "image":
-          $("<p class='message'><img src='" + data.body + "' widht='400' height='400'></p>").appendTo(message);
-          break;
-        case "link":
-          $("<p class='message'><a href='" + data.body + ">" + data.body + "</a></p>").appendTo(message);
-          break;
-        default:
-          $(("<p class='message'>" + data.body + "</p>")).appendTo(replies);
-      };
-
-    };
-
-    $('#command-input').keydown(function(event) {
-      if (event.keyCode == 13) {
-        var that = $(this);
-        socket.emit('message', that.val());
-        that.val('');
-      }
-    });
-
-    socket.on('connect', function(data) {
-      socket.emit('message', "!welcome me");
-    });
-
-    socket.on('message', function(data){
-      try {
-        formatReply(data);
-      }
-      catch(err) {
-        console.log("not a JSON");
-      }
-
-      replies.scrollTop(replies.get(0).scrollHeight);
-    });
-  </script>
-
+  <script src="/app.js"></script>
 </body>
 </html>

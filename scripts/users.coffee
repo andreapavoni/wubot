@@ -3,8 +3,9 @@
 #
 # Commands:
 #   hubot users - Reply with the list of usernames actually connected to Hubot
-#   hubot call me <your name> - Hubot will call you with your new name
-#   hubot what is my name? - Reply with the user name
+#   hubot call me - Reply with your name
+#   hubot call me <your name> - Reply with your new name
+#   hubot welcome me <your name> - Reply with a welcome message
 
 module.exports = (robot) ->
   robot.respond /users$/i, (msg) ->

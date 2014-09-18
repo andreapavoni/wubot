@@ -9,11 +9,15 @@ gulp.task "css", ->
     .on("error", gutil.log)
     .pipe(gulp.dest("./static/"))
 
+gulp.task "js", ->
+  gulp.src("./assets/coffee/app.coffee")
+    .pipe(coffee())
+    .on("error", gutil.log)
+    .pipe(gulp.dest("./static/"))
+
 gulp.task "watch", ->
   gulp.watch "assets/**/*.*", ["assets"]
 
-gulp.task "assets", [
-  "css"
-]
+gulp.task "assets", [ "css", "js" ]
 
 gulp.task "default", ["assets"]
