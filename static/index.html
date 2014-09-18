@@ -11,11 +11,11 @@
     <h1>Huboard</h1>
 
     <div class="js-replies" id="replies">
-      <p class="message"><span class="name">Hubot:</span> Hello there, I'm here to serve your commands</p>
     </div>
 
     <div class="command-bar">
-      <input class="js-command-input" id="command-input" type="text" autofocus/></input>
+      <input class="js-command-input" id="command-input" type="text" autofocus /></input>
+      <p class="hint">Type <code>!help</code> for available commands.</p>
     </div>
   </div>
 
@@ -23,6 +23,26 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();
+    var replies = $('#replies');
+
+    var formatReply = function(data) {
+      switch (data.type) {
+        case "text":
+          $.each(data.body.split("\n"), function( index, body ) {
+            $(("<p class='message'>" + body + "</p>")).appendTo(replies);
+          });
+          break;
+        case "image":
+          $("<p class='message'><img src='" + data.body + "' widht='400' height='400'></p>").appendTo(message);
+          break;
+        case "link":
+          $("<p class='message'><a href='" + data.body + ">" + data.body + "</a></p>").appendTo(message);
+          break;
+        default:
+          $(("<p class='message'>" + data.body + "</p>")).appendTo(replies);
+      };
+
+    };
 
     $('#command-input').keydown(function(event) {
       if (event.keyCode == 13) {
@@ -32,18 +52,16 @@
       }
     });
 
+    socket.on('connect', function(data) {
+      socket.emit('message', "!welcome me");
+    });
+
     socket.on('message', function(data){
-      var replies = $('#replies');
-      var message;
-      if (data.match(/(jpeg|jpg|gif|png)$/) != null) {
-        message = $(("<p class='message'/>"));
-        $("<span class='name'>Hubot:</span><br/><img src='" + data + "' widht='400' height='400'>").appendTo(message);
-        message.appendTo(replies);
-      } else {
-        pars = [];
-        $.each(data.split("\n"), function( index, value ) {
-          $(("<p class='message'><span class='name'>Hubot:</span> " + value + "</p>")).appendTo(replies);
-        });
+      try {
+        formatReply(data);
+      }
+      catch(err) {
+        console.log("not a JSON");
       }
 
       replies.scrollTop(replies.get(0).scrollHeight);

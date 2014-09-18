@@ -24,6 +24,14 @@
     "url": "https://github.com/github/hubot.git"
   },
 
+  "devDependencies": {
+    "coffee-script": "1.7.x",
+    "gulp": "*",
+    "gulp-util": "*",
+    "gulp-coffee": "*",
+    "gulp-ruby-sass": "*"
+  },
+
   "dependencies": {
     "hubot":         ">= 2.6.0 < 3.0.0",
     "express": "3.3.4",

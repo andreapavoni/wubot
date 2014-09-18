@@ -22,8 +22,11 @@ otherRules = [
 module.exports = (robot) ->
   robot.respond /(what are )?the (three |3 )?(rules|laws)/i, (msg) ->
     text = msg.message.text
+    body = ''
     if text.match(/apple/i) or text.match(/dev/i)
-      msg.send otherRules.join('\n')
+      body = otherRules.join('\n')
     else
-      msg.send rules.join('\n')
+      body = rules.join('\n')
+
+    msg.send {type: 'text', body: body}
 

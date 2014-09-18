@@ -5,22 +5,23 @@
 #   hubot ping - Reply with pong
 #   hubot echo <text> - Reply back with <text>
 #   hubot time - Reply with current time
-#   hubot die - End hubot process
+#   hubot your name - Reply with its own name
+#   hubot adapter - Reply with the adapter name
 
 module.exports = (robot) ->
-  robot.respond /PING$/i, (msg) ->
-    msg.send "PONG"
+  robot.respond /ping$/i, (msg) ->
+    msg.send {type: 'text', body: 'PONG'}
 
-  robot.respond /ADAPTER$/i, (msg) ->
-    msg.send robot.adapterName
+  robot.respond /adapter$/i, (msg) ->
+    msg.send {type: 'text', body: robot.adapterName}
 
-  robot.respond /ECHO (.*)$/i, (msg) ->
-    msg.send msg.match[1]
+  robot.respond /echo (.*)$/i, (msg) ->
+    msg.send {type: 'text', body: msg.match[1]}
 
-  robot.respond /TIME$/i, (msg) ->
-    msg.send "Server time is: #{new Date()}"
+  robot.respond /time$/i, (msg) ->
+    body = "Server time is: #{new Date()}"
+    msg.send {type: 'text', body: body}
 
-  robot.respond /DIE$/i, (msg) ->
-    msg.send "Goodbye, cruel world."
-    process.exit 0
-
+  robot.respond /.*your name$/i, (msg) ->
+    body = "My name is #{robot.name}"
+    msg.send {type: 'text', body: body}
