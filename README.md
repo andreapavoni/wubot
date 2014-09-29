@@ -7,6 +7,7 @@ A simple experiment to play with [Hubot](https://hubot.github.com/). It uses
 
 * `git clone https://github.com/apeacox/wubot.git`
 * `npm install`
+* `gulp`
 * `./bin/hubot -a socket.io-adapter`
 * point your browser to `http://127.0.0.1:8080`
 
@@ -22,5 +23,9 @@ provided ones.
 ## TODO
 
 * better UI
-* refactor JS code
+* refactorings
 * more useful plugins
+
+## LICENSE
+
+Copyright (c) 2014 Andrea Pavoni http://andreapavoni.com
