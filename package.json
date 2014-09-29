@@ -1,27 +1,26 @@
 {
-  "name": "hosted-hubot",
-  "version": "2.7.1",
+  "name": "hubot-web-mate",
+  "version": "0.0.1",
   "private": true,
 
-  "author": "GitHub Inc.",
+  "author": "Andrea Pavoni",
 
   "keywords": [
-    "github",
     "hubot",
-    "campfire",
-    "bot"
+    "bot",
+    "web"
   ],
 
-  "description": "A simple helpful robot for your Company",
+  "description": "A simple helpful robot at your disposal",
 
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/github/hubot/raw/master/LICENSE"
+    "url": "https://github.com/apeacox/wubot/raw/master/LICENSE"
   }],
 
   "repository" : {
     "type": "git",
-    "url": "https://github.com/github/hubot.git"
+    "url": "https://github.com/apeacox/wubot.git"
   },
 
   "devDependencies": {

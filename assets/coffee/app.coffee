@@ -1,7 +1,9 @@
 socket = io()
 replies = $("#replies")
+lastCommand = ''
 
 showReply = (data) ->
+  $("<p class='command'/>").text(lastCommand).appendTo replies if lastCommand.length > 0
   reply = $("<p class='message'/>")
 
   switch data.type
@@ -23,7 +25,8 @@ showReply = (data) ->
 $("#command-input").keydown (event) ->
   if event.keyCode is 13
     that = $(this)
-    socket.emit "message", that.val()
+    lastCommand = that.val()
+    socket.emit "message", "!#{that.val()}"
     that.val ""
 
 socket.on "connect", (data) ->

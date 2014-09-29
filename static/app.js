@@ -1,12 +1,17 @@
 (function() {
-  var replies, showReply, socket;
+  var lastCommand, replies, showReply, socket;
 
   socket = io();
 
   replies = $("#replies");
 
+  lastCommand = '';
+
   showReply = function(data) {
     var img, link, reply, row, rows, _i, _len;
+    if (lastCommand.length > 0) {
+      $("<p class='command'/>").text(lastCommand).appendTo(replies);
+    }
     reply = $("<p class='message'/>");
     switch (data.type) {
       case "text":
@@ -34,7 +39,8 @@
     var that;
     if (event.keyCode === 13) {
       that = $(this);
-      socket.emit("message", that.val());
+      lastCommand = that.val();
+      socket.emit("message", "!" + (that.val()));
       return that.val("");
     }
   });

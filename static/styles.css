@@ -96,7 +96,8 @@ h1 {
   .centered .js-replies {
     max-height: 400px;
     overflow-y: scroll;
-    overflow-x: none; }
+    overflow-x: hidden;
+    width: 100%; }
   .centered .command-bar {
     margin-top: 2em; }
     .centered .command-bar > .hint {
@@ -109,7 +110,21 @@ h1 {
   .centered .message {
     line-height: 24px;
     display: block;
-    margin-bottom: 20px; }
+    margin-bottom: 1.5em;
+    background-color: #484856;
+    padding: 0.3em;
+    border-radius: 3px;
+    border: solid thin #5e5e5e; }
+  .centered .command {
+    line-height: 24px;
+    display: block;
+    margin-bottom: -2px;
+    background-color: #484856;
+    padding: 0.3em;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: solid thin #5e5e5e;
+    color: #aaa; }
   .centered input {
     background: #212121;
     padding: 20px;

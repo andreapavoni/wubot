@@ -22,11 +22,8 @@ module.exports = (robot) ->
         msg.send "No available commands match #{filter}"
         return
 
-    prefix = robot.alias or robot.name
     cmds = cmds.map (cmd) ->
-      cmd = cmd.replace /hubot/ig, robot.name
-      cmd.replace new RegExp("^#{robot.name}"), prefix
-
+      cmd = cmd.replace /hubot/ig, ""
       cmd.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
     emit = cmds.join "\n"
