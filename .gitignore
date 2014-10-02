@@ -4,3 +4,4 @@ old.*
 tmp/*
 .sass-cache/*
 static/*.map
+bower_components

@@ -25,10 +25,15 @@
 
   "devDependencies": {
     "coffee-script": "1.7.x",
+    "bower": "*",
+    "main-bower-files": "*",
     "gulp": "*",
     "gulp-util": "*",
     "gulp-coffee": "*",
-    "gulp-ruby-sass": "*"
+    "gulp-ruby-sass": "*",
+    "gulp-bower-files": "*",
+    "gulp-rimraf": "*",
+    "gulp-concat": "*"
   },
 
   "dependencies": {
